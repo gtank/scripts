@@ -890,12 +890,71 @@ _write_secure_demo_disk() {
     local dst_img="$2"
     local tmp_esp="${VM_TMP_DIR}/esp"
 
+    local workdir=`pwd`
+    local root=CoreOS-Boot-CA
+    local signer=CoreOS-Boot-Signer
+    local days=3650
+
+    echo "Formatting ${dst_img}"
+    sudo losetup -a
+    "${BUILD_LIBRARY_DIR}/disk_util" \
+        --disk_layout="secure_demo" format "${dst_img}"
+    echo "Mounting ${dst_img} to ${tmp_esp}"
+    "${BUILD_LIBRARY_DIR}/disk_util" \
+        --disk_layout="secure_demo" mount "${dst_img}" "${tmp_esp}"
+
+    sudo mkdir -p "${tmp_esp}/EFI/boot"
+
+    cd ${BUILD_LIBRARY_DIR}/secure_demo/
+
+#if [ ! -d efitools ]; then
+#git clone git://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
+#fi
+#
+#if [ ! -d shim ]; then
+#git clone https://github.com/mjg59/shim.git
+#fi
+
+#openssl req -x509 -nodes -newkey rsa:2048 -out ${root}.crt -keyout ${root}.key -days ${days}
+#openssl x509 -in ${root}.crt -outform DER -out ${root}.cer
+#echo 01 > ${root}.srl
+#touch ${root}.idx
+#rm -r signed
+#mkdir signed
+#openssl req -nodes -newkey rsa:2048 -keyout ${signer}.key -out ${signer}.req
+#openssl ca -config config/${root}.cnf -extensions codesigning -in ${signer}.req -out ${signer}.crt
+
+#cd efito
+#make clean
+#for key in PK KEK DB; do
+#openssl req -new -x509 -newkey rsa:2048 -subj "/CN=Demo $key/" -keyout $key.key -out $key.crt \
+#-days ${days} -nodes -sha256
+#done
+#make LockDown.efi
+#sudo cp LockDown.efi ${tmp_esp}/EFI/boot/lockdown.efi
+
+    cd ../shim
+#make clean
+#git apply ../ubuntu_build_fix.patch
+#make VENDOR_CERT_FILE=../${root}.cer
+    sbsign --key efitools/DB.key --cert efitools/DB.crt --output ${tmp_esp}/EFI/boot/bootx64.efi shim.efi
+
+    cd ${BUILD_LIBRARY_DIR}/secure_demo/
+
+    gpg --batch --gen-key "${BUILD_LIBRARY_DIR}/secure_demo/config/gpg.conf"
+    gpg --armor \
+        --export \
+        --no-default-keyring \
+        --secret-keyring grub-sign.sec --keyring grub-sign.pub --local-user security@coreos.com > \
+        "${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Grub-Signing-Key.gpg"
+
     grub-mkstandalone \
         --output="${VM_TMP_DIR}/grub.efi" \
         --format=x86_64-efi \
         --modules=verify \
-        --pubkey="${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Grub-Singing-Key.gpg" \
-        "/boot/grub/grub.cfg=${BUILD_LIBRARY_DIR}/secure_demo/grub.cfg"
+        --pubkey="${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Grub-Signing-Key.gpg" \
+        "/boot/grub/grub.cfg=${BUILD_LIBRARY_DIR}/secure_demo/config/grub.cfg"
+
     sbsign --key "${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Boot-Signer.key" \
         --cert "${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Boot-Signer.crt" \
         "${VM_TMP_DIR}/grub.efi"
@@ -904,22 +963,18 @@ _write_secure_demo_disk() {
     sbsign --key "${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Boot-Signer.key" \
         --cert "${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Boot-Signer.crt" \
         "${VM_TMP_DIR}/vmlinuz"
-    gpg --detach-sign --local-user BA076BAA \
+    gpg --detach-sign \
+        --no-default-keyring \
+        --secret-keyring grub-sign.sec --keyring grub-sign.pub --local-user security@coreos.com \
         --output "${VM_TMP_DIR}/vmlinuz.sig" \
         "${VM_TMP_DIR}/vmlinuz.signed"
 
     _write_cpio_common "ignored" "${VM_TMP_DIR}/initrd"
-    gpg --detach-sign --local-user BA076BAA "${VM_TMP_DIR}/initrd"
+    gpg --detach-sign \
+        --no-default-keyring \
+        --secret-keyring grub-sign.sec --keyring grub-sign.pub --local-user security@coreos.com \
+        "${VM_TMP_DIR}/initrd"
 
-    "${BUILD_LIBRARY_DIR}/disk_util" \
-        --disk_layout="secure_demo" format "${dst_img}"
-    "${BUILD_LIBRARY_DIR}/disk_util" \
-        --disk_layout="secure_demo" mount "${dst_img}" "${tmp_esp}"
-
-    sudo mkdir -p "${tmp_esp}/EFI/boot"
-    sudo cp "${BUILD_LIBRARY_DIR}/secure_demo/bootx64.efi" \
-            "${BUILD_LIBRARY_DIR}/secure_demo/lockdown.efi" \
-            "${tmp_esp}/EFI/boot"
     sudo cp "${VM_TMP_DIR}/grub.efi.signed" "${tmp_esp}/EFI/boot/grub.efi"
 
     sudo mkdir -p "${tmp_esp}/coreos"

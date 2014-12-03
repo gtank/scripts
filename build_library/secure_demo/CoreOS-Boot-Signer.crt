@@ -2,75 +2,74 @@ Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number: 1 (0x1)
-    Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C=US, ST=CA, L=SF, O=CoreOS, CN=CoreOS Boot CA/emailAddress=george.tankersley@gmail.com
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, ST=California, L=San Francisco, O=CoreOS, OU=BootCA, CN=Core Boot CA
         Validity
             Not Before: Jan  1 00:00:00 1970 GMT
-            Not After : Oct 31 06:53:45 2024 GMT
-        Subject: C=US, ST=CA, L=SF, O=CoreOS, CN=CoreOS Boot Signer/emailAddress=george.tankersley@gmail.com
+            Not After : Nov 24 08:00:32 2024 GMT
+        Subject: C=US, ST=CA, L=SF, O=CoreOS, OU=BootSign, CN=Core Boot Signer
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (2048 bit)
                 Modulus:
-                    00:b4:35:c8:8c:86:8f:89:4f:d8:63:f6:a3:80:db:
-                    7e:da:dc:53:6e:66:77:0d:1a:7e:0d:b2:3e:6a:85:
-                    1c:d9:1c:f9:48:ce:80:e7:31:c2:b3:e1:e4:2b:2b:
-                    1f:45:16:0b:52:57:8a:fc:7b:fd:ba:81:8b:35:13:
-                    4a:54:2a:be:35:0f:f4:ea:26:38:50:59:0b:9b:9c:
-                    88:a3:c9:01:08:fe:43:5d:f1:ef:15:6d:6d:03:06:
-                    3c:ab:c5:b8:93:79:84:ba:6b:f6:7b:59:8b:74:c2:
-                    2b:2d:a2:e9:e9:82:3f:f5:32:b5:b9:31:f4:9c:4b:
-                    e0:84:a0:40:44:01:e1:63:4d:da:a8:c7:3f:76:8e:
-                    09:6a:ce:b9:75:32:56:9c:39:5a:44:94:b5:4d:76:
-                    64:b0:4e:42:ee:99:5f:9b:96:cb:e7:50:f1:10:2a:
-                    09:8c:49:62:5d:e4:b9:29:2b:a7:4a:77:b4:7c:d4:
-                    4b:4e:1f:84:ce:9a:be:e1:44:95:29:cd:35:09:ec:
-                    c0:cc:a2:31:91:d1:fd:a9:ce:1a:79:3f:2a:9b:94:
-                    f2:49:60:7c:ba:f0:1b:62:24:4e:35:39:bb:9b:a1:
-                    19:42:04:cb:9b:e0:5a:a5:52:3f:ec:b1:8e:2a:07:
-                    20:0f:56:6b:38:55:5e:06:59:dd:57:e5:20:16:47:
-                    dc:e9
+                    00:e5:99:ce:59:fa:73:9c:b6:19:1b:90:44:9b:34:
+                    53:c3:ef:81:74:54:0c:e0:92:2f:8e:b4:df:80:35:
+                    3b:29:57:bc:48:8b:d2:ad:19:f7:2e:ed:e5:81:14:
+                    b6:07:47:de:c4:0b:49:db:6a:c2:f2:74:b7:62:29:
+                    8f:74:3e:57:97:93:0e:bd:af:e4:b5:c2:34:3b:3f:
+                    3f:de:7d:8e:26:af:c3:01:49:64:05:22:a6:88:83:
+                    4f:d6:69:f7:a3:99:37:14:e3:05:86:7e:d8:7b:2b:
+                    57:65:3e:e2:ce:d4:53:d2:d4:55:74:55:35:53:9d:
+                    08:9c:3f:2a:f5:04:49:62:a9:34:08:5e:fe:18:fa:
+                    d3:23:85:c5:3a:6a:2c:25:33:4d:3f:3c:e1:03:9d:
+                    32:fe:7c:54:2e:02:9a:92:96:af:a0:7d:75:1b:40:
+                    de:73:b3:76:af:01:4e:e1:ab:e6:52:d0:52:5d:6f:
+                    a3:69:9a:cd:3c:37:4e:02:44:df:51:19:48:79:dc:
+                    15:e4:dd:4e:db:e9:03:ae:f1:26:45:21:82:e1:d7:
+                    d3:9e:05:6d:7c:4f:4f:8a:5d:68:cc:c9:b7:83:e7:
+                    dd:a6:df:e6:47:26:16:2c:64:3e:95:4a:73:c3:95:
+                    d1:d2:7b:15:ad:2b:50:82:35:c3:55:12:cd:ae:ae:
+                    69:1d
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
             X509v3 Key Usage: 
                 Digital Signature
             X509v3 Extended Key Usage: 
                 Code Signing
-    Signature Algorithm: sha256WithRSAEncryption
-         c1:e9:22:50:29:21:26:e8:57:1e:06:ce:f5:0c:47:5f:5d:51:
-         57:e2:64:10:75:1b:ca:9b:f0:0f:38:81:91:8d:4e:c1:11:19:
-         e3:e9:db:6a:9e:36:66:f8:89:1d:7f:2e:8a:50:1d:0b:5a:c7:
-         d4:c5:60:3c:ba:0c:78:1c:40:bd:3c:80:aa:73:ce:04:4e:2c:
-         d9:da:5d:6c:19:bf:6e:9e:e5:ba:0e:3a:14:d1:e9:d0:17:0b:
-         98:00:ab:3d:18:b7:27:04:2f:15:7f:6d:57:03:11:29:c0:d4:
-         86:25:14:e4:91:06:7e:5d:59:ac:3a:67:95:e0:7d:c8:f5:08:
-         74:2e:9b:68:af:65:db:25:8b:8a:ae:33:f4:62:4c:10:7c:f4:
-         70:25:68:d1:b1:74:43:14:a7:4f:35:b7:5c:30:ca:8b:84:24:
-         3a:08:ff:f6:47:79:c6:b4:ef:cc:80:b0:52:2b:19:57:94:0e:
-         d2:cd:55:23:ee:1e:32:13:53:8e:1e:2c:46:99:23:0c:c7:2c:
-         df:81:6d:60:bd:8a:51:77:69:cf:cc:11:9f:ba:5c:f3:e2:9a:
-         0f:de:a9:f4:a5:8d:a8:86:a2:9e:00:82:24:c7:17:3c:14:1a:
-         db:04:4c:91:33:05:87:49:69:ea:b3:8d:8e:f9:3a:2c:85:65:
-         95:6b:6a:cb
+    Signature Algorithm: sha1WithRSAEncryption
+         12:4c:6c:e8:a0:04:ed:ca:43:2f:29:00:88:c5:17:3f:69:35:
+         25:22:8b:6d:c2:72:84:9c:0e:60:4a:da:ed:19:47:24:12:4b:
+         31:d2:b6:33:73:e6:db:f1:06:07:82:6c:79:f1:31:25:99:59:
+         91:92:a7:53:4a:ed:30:2d:95:7d:e9:b5:73:10:dd:53:02:fa:
+         93:c5:2b:9f:65:f6:c6:e4:0d:b0:f2:2f:33:ce:2c:3c:4b:f9:
+         39:f1:a5:d1:22:13:7f:ea:e9:d7:44:c9:8a:af:03:d2:29:73:
+         36:5f:56:76:22:7e:af:ac:f4:4b:2f:81:09:0c:d9:16:0b:06:
+         db:18:c1:33:90:c8:86:be:b8:1f:09:6e:c5:7f:a8:0d:e1:92:
+         13:4e:42:5d:c9:c7:fb:f0:40:78:6a:d7:06:4e:bd:86:7a:01:
+         10:48:08:32:41:c7:2e:3d:63:a0:f2:27:78:04:d5:42:c7:1e:
+         43:a2:9a:f1:8b:fb:c0:c1:b4:19:cc:1f:17:b9:47:ff:f4:42:
+         53:94:f9:33:20:29:db:39:0e:77:84:90:a6:8e:38:d1:9e:35:
+         a4:a9:4e:d4:0f:c8:86:26:d5:ce:76:e4:4a:ec:24:4c:09:5e:
+         f7:02:32:08:d3:66:e1:b7:a4:08:eb:71:49:b3:68:19:ef:77:
+         4c:90:cc:4e
 -----BEGIN CERTIFICATE-----
-MIIDoDCCAoigAwIBAgIBATANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJVUzEL
-MAkGA1UECAwCQ0ExCzAJBgNVBAcMAlNGMQ8wDQYDVQQKDAZDb3JlT1MxFzAVBgNV
-BAMMDkNvcmVPUyBCb290IENBMSowKAYJKoZIhvcNAQkBFhtnZW9yZ2UudGFua2Vy
-c2xleUBnbWFpbC5jb20wIBgPMTk3MDAxMDEwMDAwMDBaFw0yNDEwMzEwNjUzNDVa
-MIGBMQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0ExCzAJBgNVBAcMAlNGMQ8wDQYD
-VQQKDAZDb3JlT1MxGzAZBgNVBAMMEkNvcmVPUyBCb290IFNpZ25lcjEqMCgGCSqG
-SIb3DQEJARYbZ2VvcmdlLnRhbmtlcnNsZXlAZ21haWwuY29tMIIBIjANBgkqhkiG
-9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtDXIjIaPiU/YY/ajgNt+2txTbmZ3DRp+DbI+
-aoUc2Rz5SM6A5zHCs+HkKysfRRYLUleK/Hv9uoGLNRNKVCq+NQ/06iY4UFkLm5yI
-o8kBCP5DXfHvFW1tAwY8q8W4k3mEumv2e1mLdMIrLaLp6YI/9TK1uTH0nEvghKBA
-RAHhY03aqMc/do4Jas65dTJWnDlaRJS1TXZksE5C7plfm5bL51DxECoJjEliXeS5
-KSunSne0fNRLTh+Ezpq+4USVKc01CezAzKIxkdH9qc4aeT8qm5TySWB8uvAbYiRO
-NTm7m6EZQgTLm+BapVI/7LGOKgcgD1ZrOFVeBlndV+UgFkfc6QIDAQABoyQwIjAL
-BgNVHQ8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQELBQAD
-ggEBAMHpIlApISboVx4GzvUMR19dUVfiZBB1G8qb8A84gZGNTsERGePp22qeNmb4
-iR1/LopQHQtax9TFYDy6DHgcQL08gKpzzgROLNnaXWwZv26e5boOOhTR6dAXC5gA
-qz0YtycELxV/bVcDESnA1IYlFOSRBn5dWaw6Z5Xgfcj1CHQum2ivZdsli4quM/Ri
-TBB89HAlaNGxdEMUp081t1wwyouEJDoI//ZHeca078yAsFIrGVeUDtLNVSPuHjIT
-U44eLEaZIwzHLN+BbWC9ilF3ac/MEZ+6XPPimg/eqfSljaiGop4AgiTHFzwUGtsE
-TJEzBYdJaeqzjY75OiyFZZVrass=
+MIIDejCCAmKgAwIBAgIBATANBgkqhkiG9w0BAQUFADBzMQswCQYDVQQGEwJVUzET
+MBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEPMA0G
+A1UECgwGQ29yZU9TMQ8wDQYDVQQLDAZCb290Q0ExFTATBgNVBAMMDENvcmUgQm9v
+dCBDQTAgGA8xOTcwMDEwMTAwMDAwMFoXDTI0MTEyNDA4MDAzMlowZjELMAkGA1UE
+BhMCVVMxCzAJBgNVBAgMAkNBMQswCQYDVQQHDAJTRjEPMA0GA1UECgwGQ29yZU9T
+MREwDwYDVQQLDAhCb290U2lnbjEZMBcGA1UEAwwQQ29yZSBCb290IFNpZ25lcjCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOWZzln6c5y2GRuQRJs0U8Pv
+gXRUDOCSL46034A1OylXvEiL0q0Z9y7t5YEUtgdH3sQLSdtqwvJ0t2Ipj3Q+V5eT
+Dr2v5LXCNDs/P959jiavwwFJZAUipoiDT9Zp96OZNxTjBYZ+2HsrV2U+4s7UU9LU
+VXRVNVOdCJw/KvUESWKpNAhe/hj60yOFxTpqLCUzTT884QOdMv58VC4CmpKWr6B9
+dRtA3nOzdq8BTuGr5lLQUl1vo2mazTw3TgJE31EZSHncFeTdTtvpA67xJkUhguHX
+054FbXxPT4pdaMzJt4Pn3abf5kcmFixkPpVKc8OV0dJ7Fa0rUII1w1USza6uaR0C
+AwEAAaMkMCIwCwYDVR0PBAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMA0GCSqG
+SIb3DQEBBQUAA4IBAQASTGzooATtykMvKQCIxRc/aTUlIottwnKEnA5gStrtGUck
+Eksx0rYzc+bb8QYHgmx58TElmVmRkqdTSu0wLZV96bVzEN1TAvqTxSufZfbG5A2w
+8i8zziw8S/k58aXRIhN/6unXRMmKrwPSKXM2X1Z2In6vrPRLL4EJDNkWCwbbGMEz
+kMiGvrgfCW7Ff6gN4ZITTkJdycf78EB4atcGTr2GegEQSAgyQccuPWOg8id4BNVC
+xx5Doprxi/vAwbQZzB8XuUf/9EJTlPkzICnbOQ53hJCmjjjRnjWkqU7UD8iGJtXO
+duRK7CRMCV73AjII02bht6QI63FJs2gZ73dMkMxO
 -----END CERTIFICATE-----
