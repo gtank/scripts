@@ -933,19 +933,26 @@ _write_secure_demo_disk() {
 #make LockDown.efi
 #sudo cp LockDown.efi ${tmp_esp}/EFI/boot/lockdown.efi
 
-    cd ../shim
-#make clean
-#git apply ../ubuntu_build_fix.patch
-#make VENDOR_CERT_FILE=../${root}.cer
-    sbsign --key efitools/DB.key --cert efitools/DB.crt --output ${tmp_esp}/EFI/boot/bootx64.efi shim.efi
+    cd ${BUILD_LIBRARY_DIR}/secure_demo/shim/
+
+    #make clean
+    #git apply ../ubuntu_build_fix.patch
+    #make VENDOR_CERT_FILE=../${root}.cer
+
+    sbsign  --key ${BUILD_LIBRARY_DIR}/secure_demo/efitools/DB.key \
+            --cert ${BUILD_LIBRARY_DIR}/secure_demo/efitools/DB.crt \
+            --output shim.signed.efi shim.efi
+
+    sudo cp shim.signed.efi "${tmp_esp}/EFI/boot/bootx64.efi"
 
     cd ${BUILD_LIBRARY_DIR}/secure_demo/
 
+    # sudo rngd -r /dev/urandom
+
     gpg --batch --gen-key "${BUILD_LIBRARY_DIR}/secure_demo/config/gpg.conf"
-    gpg --armor \
-        --export \
+    gpg --export \
         --no-default-keyring \
-        --secret-keyring grub-sign.sec --keyring grub-sign.pub --local-user security@coreos.com > \
+        --keyring ./grub-sign.pub --local-user security@coreos.com > \
         "${BUILD_LIBRARY_DIR}/secure_demo/CoreOS-Grub-Signing-Key.gpg"
 
     grub-mkstandalone \
@@ -965,14 +972,14 @@ _write_secure_demo_disk() {
         "${VM_TMP_DIR}/vmlinuz"
     gpg --detach-sign \
         --no-default-keyring \
-        --secret-keyring grub-sign.sec --keyring grub-sign.pub --local-user security@coreos.com \
+        --secret-keyring ./grub-sign.sec --keyring ./grub-sign.pub --local-user security@coreos.com \
         --output "${VM_TMP_DIR}/vmlinuz.sig" \
         "${VM_TMP_DIR}/vmlinuz.signed"
 
     _write_cpio_common "ignored" "${VM_TMP_DIR}/initrd"
     gpg --detach-sign \
         --no-default-keyring \
-        --secret-keyring grub-sign.sec --keyring grub-sign.pub --local-user security@coreos.com \
+        --secret-keyring ./grub-sign.sec --keyring ./grub-sign.pub --local-user security@coreos.com \
         "${VM_TMP_DIR}/initrd"
 
     sudo cp "${VM_TMP_DIR}/grub.efi.signed" "${tmp_esp}/EFI/boot/grub.efi"
